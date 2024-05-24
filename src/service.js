@@ -10,7 +10,7 @@ const getLocationData = async (ipOrDomain) => {
     ipOrDomain === "" ||
     validateDomain(ipOrDomain)
   ) {
-    url = `http://ip-api.com/json/${ipOrDomain}`;
+    url = `https://ip-api.com/json/${ipOrDomain}`;
   } else {
     throw new Error("Invalid IP address or domain");
   }
