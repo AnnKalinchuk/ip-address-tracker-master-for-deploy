@@ -1,0 +1,10 @@
+.map-component {
+  width: 400px;
+  height: 100%;
+  min-height: 400px;
+}
+
+.leaflet-div-icon {
+  background: none !important;
+  border: none !important;
+}

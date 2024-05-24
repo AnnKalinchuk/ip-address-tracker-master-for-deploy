@@ -1,0 +1,201 @@
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.search-wrapper {
+  min-height: 300px;
+  background-image: url(./assets/images/pattern-bg-mobile.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.search-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+
+  height: 100%;
+  padding: 30px 0;
+}
+
+.search-block {
+  text-align: center;
+}
+
+h1 {
+  color: white;
+  font-size: 27px;
+  font-weight: 400;
+  margin-bottom: 22px;
+}
+
+.search-input-container {
+  display: flex;
+  align-items: center;
+}
+
+.search-input-container input {
+  flex: 1;
+  padding: 10px 30px;
+  border: 1px solid #ccc;
+  border-radius: 10px 0 0 10px;
+  height: 58px;
+  font-size: 18px;
+  width: 200px;
+}
+
+.search-input-container button {
+  padding: 10px 20px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 0 10px 10px 0;
+  cursor: pointer;
+
+  height: 58px;
+  width: 58px;
+}
+
+.input-ipAddress:focus {
+  outline: none;
+}
+
+form {
+  text-align: left;
+}
+
+span {
+  color: red;
+}
+.center-block {
+  z-index: 9999;
+  background-color: white;
+  border-radius: 10px;
+  position: absolute;
+  top: 166px;
+
+  padding: 20px;
+
+  max-width: 256px;
+}
+.center-block-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  flex-direction: column;
+  text-align: center;
+}
+
+.info-header {
+  color: grey;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.info {
+  font-weight: 700;
+  font-size: 20px;
+
+  padding: 10px;
+}
+
+.info-group {
+  position: relative;
+}
+
+.leaflet-wrapper {
+  flex: 1 1 auto;
+  height: 100%;
+}
+
+@media only screen and (min-width: 375px) {
+  .search-input-container input {
+    width: 270px;
+  }
+
+  .center-block {
+    padding: 23px 25px 23px 25px;
+    min-width: 326px;
+    max-width: 326px;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .search-wrapper {
+    min-height: 280px;
+    background-image: url(./assets/images/pattern-bg-desktop.png);
+  }
+  h1 {
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 30px;
+  }
+
+  .search-input-container input {
+    width: 400px;
+  }
+  .center-block {
+    top: 180px;
+    width: 456px;
+    max-width: 456px;
+  }
+}
+
+@media only screen and (min-width: 900px) {
+  .center-block {
+    width: 880px;
+    max-width: 880px;
+
+    padding: 40px 20px 20px 20px;
+    top: 200px;
+  }
+
+  .center-block-container {
+    flex-direction: row;
+    gap: 30px;
+    text-align: left;
+  }
+
+  .search-input-container input {
+    width: 496px;
+  }
+  .info-group {
+    width: 274px;
+  }
+
+  .info-group::after {
+    content: "";
+    position: absolute;
+    top: 10px;
+    bottom: 10px;
+    width: 1px;
+    background-color: grey;
+    opacity: 0.4;
+
+    right: -1px;
+  }
+
+  .info-last-element::after {
+    width: 0px;
+  }
+  .info-header {
+    font-size: 12px;
+  }
+  .info {
+    font-size: 23px;
+
+    padding: 10px 60px 10px 0px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .center-block {
+    width: 1110px;
+    max-width: 1110px;
+  }
+}
