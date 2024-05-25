@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import iconArrow from "./assets/images/icon-arrow.svg";
 import getLocationData from "./service";
 import timezoneFormat from "./utils/timezoneFormat";
+import defaultData from "./utils/DefaultData";
 
 function App() {
   const [data, setData] = useState(null);
@@ -22,15 +23,30 @@ function App() {
   const getData = async (ipOrDomain) => {
     try {
       setErrorResponse("");
-      const responseData = await getLocationData(ipOrDomain);
+
+      let ipOrDomainToUse = ipOrDomain;
+      if (ipOrDomainToUse === "") {
+        ipOrDomainToUse = "192.212.174.101";
+      }
+
+      const responseData = await getLocationData(ipOrDomainToUse);
+      console.log(responseData);
       setData(responseData);
       setCoordinates({
-        lat: responseData.lat,
-        lng: responseData.lon,
+        lat: responseData.latitude,
+        lng: responseData.longitude,
       });
     } catch (error) {
       console.error("Error fetching data:", error.message);
-      setErrorResponse(error.message);
+      if (error.message.includes("Network Error")) {
+        setData(defaultData);
+        setCoordinates({
+          lat: defaultData.latitude,
+          lng: defaultData.longitude,
+        });
+      } else {
+        setErrorResponse(error.message);
+      }
     }
   };
 
@@ -68,19 +84,19 @@ function App() {
               <div className="center-block-container">
                 <div className="info-group">
                   <h4 className="info-header">IP Address</h4>
-                  <div className="info">{data.query}</div>
+                  <div className="info">{data.ip}</div>
                 </div>
                 <div className="info-group">
                   <h4 className="info-header">Location</h4>
                   <div className="info">
-                    {`${data.city}, ${data.regionName} ${data.zip}`}
+                    {`${data.city}, ${data.state_prov} ${data.zipcode}`}
                   </div>
                 </div>
                 <div className="info-group">
                   <h4 className="info-header">Timezone</h4>
                   <div className="info">
                     UTC
-                    {timezoneFormat(data.timezone)}
+                    {timezoneFormat(data.time_zone.name)}
                   </div>
                 </div>
                 <div className="info-group info-last-element">
